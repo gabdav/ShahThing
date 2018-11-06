@@ -29,7 +29,7 @@ public class Player {
         return numOut;
     }
 
-    private int convertCharNumtoNum(char charIn){ //convert string number to real int and check that it is less than 8
+    private int convertCharNumToNum(char charIn){ //convert string number to real int and check that it is less than 8
         int numOut = -1; //if -1 is returned the number is not valid
         int convertedNum = Character.getNumericValue(charIn);
 
@@ -63,18 +63,17 @@ public class Player {
                         int x, y;
 
                         if((x = convertCharToNum(Character.toUpperCase(moveIn.charAt(0)))) != -1){
-                            if((y = convertCharNumtoNum(moveIn.charAt(1))) != -1){
+                            if((y = convertCharNumToNum(moveIn.charAt(1))) != -1){
                                 y = 8 - y; //flipping value so that 0 index is on top
                                 int tempArray[] = {x, y};
                                 if(runNum == 1){
-                                    if(Board.board[y][x].getType() == "blank" || Board.board[y][x].getColor() != color){
+                                    if(Board.board[y][x].getType().equalsIgnoreCase("blank") || !Board.board[y][x].getColor().equalsIgnoreCase(color)){
 
                                         //returning an array full of -1's if the first location does not point to a piece
                                         //or if the piece is not of the same color as the player
                                         tempArray[0] = -1;
                                         tempArray[1] = -1;
-                                        int[][] errorArray = {tempArray, tempArray};
-                                        return errorArray;
+                                        return new int[][]{tempArray, tempArray};
                                     }
                                 }
 

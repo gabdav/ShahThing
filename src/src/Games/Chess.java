@@ -4,9 +4,10 @@ import Game.*;
 import Pieces.*;
 
 public class Chess implements Game {
-
+    public static boolean activeGame = false;
     @Override
     public void setupBoard() {
+
 
         Board.board[0][0] = new Rook("black");
         Board.board[0][1] = new Horse("black");

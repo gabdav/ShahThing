@@ -25,9 +25,33 @@ public class Main {
         }
         return name;
     }
+    private static String getGameName(){
+        String game;
+        while(true){
+            System.out.println("Pick a game: Chess or Checkers");
+            game = scanner.nextLine().trim();
+            if(!game.isEmpty() && !(game.contains(" ") || game.contains("\t")) &&
+                    (game.equalsIgnoreCase("Chess") || game.equalsIgnoreCase("Checkers" ))){
+                break;
+            }else{
+                System.out.println("Invalid game. Try again.");
+            }
+        }
+        return game;
+    }
     public static void main(String[] args){
 
-        System.out.println("=====> CHESS <====="); //title
+        String gameName = getGameName();
+        Game game;
+
+        if(gameName.equalsIgnoreCase("Chess")){
+            game = new Chess();
+            Chess.activeGame = true;
+            System.out.println("=====> CHESS <=====");
+        }else{
+            game = new Checkers();
+            System.out.println("=====> CHECKERS <=====");
+        }
 
         String ply1Name = getName(1, null);
         String ply2Name = getName(2, ply1Name);
@@ -35,13 +59,14 @@ public class Main {
         Player whitePly = new Player(ply1Name, "white");
         Player blackPly = new Player(ply2Name, "black");
 
-        Game game = new Chess();
         game.setupBoard();
 
-        //start main loop
+        System.out.println(game.getClass().getSimpleName());
+
         while(true){
 
-            for(int runNum = 1; runNum <= 2; runNum++){ //run for each player
+            for(int runNum = 1; runNum <= 2; runNum++){
+
                 Board.draw();
                 int move[][];
 
@@ -74,7 +99,7 @@ public class Main {
                         Board.update(moveFrom,moveTo);
                         break;
                     }
-                    System.out.println("Invalid move. Try again."); //not printed if break is called
+                    System.out.println("Invalid move. Try again.");
                 }
             }
         }
