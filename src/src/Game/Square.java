@@ -14,6 +14,9 @@ public abstract class Square {
         return type;
     }
 
+    public void setType(String type) {
+         this.type = type;
+    }
     public String getSymbol() {
 
         return symbol;

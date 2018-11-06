@@ -79,9 +79,9 @@ public class Rook extends Piece{
             }
         }
         else{ // direction : top or bot
-            int displaceMax = Math.abs(moveToY - moveFromY); //displacement max depending on what the move to values are
+            int displaceMax = Math.abs(moveToY - moveFromY);
 
-            for(int displace = 1; displace <= displaceMax; displace++){ //looping through squares on the rooks path
+            for(int displace = 1; displace <= displaceMax; displace++){
 
                 if(direction.equalsIgnoreCase("top")){
                     testSquare = Board.board[moveFromY - displace][moveFromX];

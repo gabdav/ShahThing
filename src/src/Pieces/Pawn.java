@@ -33,9 +33,10 @@ public class Pawn extends Piece {
         if(plyColor.equalsIgnoreCase("white")){ //for white pieces direction changes
             moveForwardOne = -1;
         }
-        else{ //black
+        else{
             moveForwardOne = 1;
         }
+
         if(Chess.activeGame) {
             if (moveToY == moveFromY + moveForwardOne) {
 
@@ -46,16 +47,13 @@ public class Pawn extends Piece {
                 //straight move forward 1 and move is to blank space
                 else return (moveToX == moveFromX) && (toSquare.getType().equalsIgnoreCase("blank"));
             }
-            return false; //only get here if other possiblities fail
+            return false;
         }else{
             if (moveToY == moveFromY + moveForwardOne && (moveToX >= moveFromX + 1 || moveToX <= moveFromX - 1)) {
-
                 //move to take a piece that is of a different color to the diagonally
                 if ((moveToX == moveFromX - 2) || (moveToX == moveFromX + 2)) {
-
                     if((!toSquare.getType().equalsIgnoreCase("blank")) && (!toSquare.getColor().equalsIgnoreCase(plyColor))){
-                        toSquare = Board.board[moveToY - moveForwardOne][moveToX - 1];
-                        toSquare = new Blank();
+                        Board.board[moveToY - moveForwardOne][moveToX - ((moveFromX - moveToX)/2)].setType("blank");
                         return true;
                     }else{
                         return false;
@@ -64,7 +62,7 @@ public class Pawn extends Piece {
                 //straight move diagonal 1 and move is to blank space
                 else return ((moveToX == moveFromX + 1 || moveToX == moveFromX - 1) && (moveToY == moveFromY + moveForwardOne) && (toSquare.getType().equalsIgnoreCase("blank")));
             }
-            return false; //only get here if other possiblities fail
+            return false;
         }
     }
 }

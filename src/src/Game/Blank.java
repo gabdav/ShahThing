@@ -5,11 +5,8 @@ public class Blank extends Square {
     public Blank() {
         super("blank");
         symbol = "#";
-        setColor(null); //a blank square has no color
+        setColor(null);
 
-    }
-
-    public void move(int[] moveToLoc) {
     }
 
     public boolean movement(int[] moveFromReq, int[] moveToReq, String plyColor) { //unused

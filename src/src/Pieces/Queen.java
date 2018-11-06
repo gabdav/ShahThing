@@ -24,14 +24,12 @@ public class Queen extends Piece {
         int moveToX = moveToReq[0];
         int moveToY = moveToReq[1];
 
-        Square toSquare = Board.board[moveToY][moveToX];
-
         String direction;
         String type; //diagonal or straight
 
-        if(moveToY == moveFromY){ //setting all possible move directions
+        if(moveToY == moveFromY){
             if(moveToX > moveFromX){
-                direction = "rite";
+                direction = "right";
                 type = "straight";
             }
             else{
@@ -52,11 +50,11 @@ public class Queen extends Piece {
         }
         else if(moveToX > moveFromX){
             if(moveToY < moveFromY){
-                direction = "topRite";
+                direction = "topRight";
                 type = "diagonal";
             }
             else{
-                direction = "botRite";
+                direction = "botRight";
                 type = "diagonal";
             }
         }
@@ -81,10 +79,10 @@ public class Queen extends Piece {
 
             for(int diagMoveAway = 1; diagMoveAway <= moveDistance; diagMoveAway++){
 
-                if(direction.equalsIgnoreCase("topRite")){
+                if(direction.equalsIgnoreCase("topRight")){
                     testSquare = Board.board[moveFromY - diagMoveAway][moveFromX + diagMoveAway];
                 }
-                else if(direction.equalsIgnoreCase("botRite")){
+                else if(direction.equalsIgnoreCase("botRight")){
                     testSquare = Board.board[moveFromY + diagMoveAway][moveFromX + diagMoveAway];
                 }
                 else if(direction.equalsIgnoreCase("topLeft")){
@@ -103,11 +101,11 @@ public class Queen extends Piece {
             }
         }
         else{ //straight
-            if((direction.equalsIgnoreCase("rite")) || (direction.equalsIgnoreCase("left"))){
-                int displaceMax = Math.abs(moveToX - moveFromX); //displacement max depending on what the move to values are
+            if((direction.equalsIgnoreCase("right")) || (direction.equalsIgnoreCase("left"))){
+                int displaceMax = Math.abs(moveToX - moveFromX);
 
-                for(int displace = 1; displace <= displaceMax; displace++){ //looping through squares on the rooks path
-                    if(direction.equalsIgnoreCase("rite")){
+                for(int displace = 1; displace <= displaceMax; displace++){
+                    if(direction.equalsIgnoreCase("right")){
                         testSquare = Board.board[moveFromY][moveFromX + displace];
 
                         if((!testSquare.getType().equalsIgnoreCase("blank")) && (displace != displaceMax)){
@@ -130,9 +128,9 @@ public class Queen extends Piece {
                 }
             }
             else{ // direction : top or bot
-                int displaceMax = Math.abs(moveToY - moveFromY); //displacement max depending on what the move to values are
+                int displaceMax = Math.abs(moveToY - moveFromY);
 
-                for(int displace = 1; displace <= displaceMax; displace++){ //looping through squares on the rooks path
+                for(int displace = 1; displace <= displaceMax; displace++){
 
                     if(direction.equalsIgnoreCase("top")){
                         testSquare = Board.board[moveFromY - displace][moveFromX];

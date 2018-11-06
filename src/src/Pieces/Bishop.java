@@ -25,11 +25,9 @@ public class Bishop extends Piece {
         int moveToX = moveToReq[0];
         int moveToY = moveToReq[1];
 
-        Square toSquare = Board.board[moveToY][moveToX];
-
         int moveDistance = Math.abs(moveToX - moveFromX);
 
-        String direction; //direction the bishop will take
+        String direction;
 
         if(moveToX > moveFromX){
             if(moveToY < moveFromY){
@@ -48,9 +46,8 @@ public class Bishop extends Piece {
             }
         }
 
-        Square testSquare; //square that will be tested for pieces
+        Square testSquare;
 
-        //for loop iterating through the diagonal path of the bishop
         for(int diagMoveAway = 1; diagMoveAway <= moveDistance; diagMoveAway++){
 
             if(direction.equalsIgnoreCase("topRight")){
@@ -62,7 +59,7 @@ public class Bishop extends Piece {
             else if(direction.equalsIgnoreCase("topLeft")){
                 testSquare = Board.board[moveFromY - diagMoveAway][moveFromX - diagMoveAway];
             }
-            else{ //botLeft
+            else{
                 testSquare = Board.board[moveFromY + diagMoveAway][moveFromX - diagMoveAway];
             }
 
@@ -73,7 +70,7 @@ public class Bishop extends Piece {
                 return true;
             }
         }
-        return false; //default return value
+        return false;
     }
 
 }
