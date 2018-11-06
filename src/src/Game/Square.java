@@ -1,5 +1,7 @@
-public class Square {
-    private String symbol;
+package Game;
+
+public abstract class Square {
+    protected String symbol;
     private String color;
     private String type;
 
@@ -28,4 +30,6 @@ public class Square {
     public void setColor(String color) {
         this.color = color;
     }
+    public abstract boolean movement(int[] moveFromReq, int[] moveToReq, String plyColor);
+
 }

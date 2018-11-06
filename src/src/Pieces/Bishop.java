@@ -1,3 +1,8 @@
+package Pieces;
+
+import Game.Board;
+import Game.Square;
+
 public class Bishop extends Piece {
 
     public Bishop(String colorIn) {
@@ -42,7 +47,6 @@ public class Bishop extends Piece {
                 direction = "botLeft";
             }
         }
-
 
         Square testSquare; //square that will be tested for pieces
 

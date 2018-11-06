@@ -1,3 +1,8 @@
+package Pieces;
+
+import Game.Board;
+import Game.Square;
+
 public class Queen extends Piece {
 
     public Queen(String colorIn) {
